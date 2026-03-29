@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+home
+{% endblock title %}
+
+{% block content %}
+
+     {% for message in messages %}
+  {% if 'logout' in message.tags %}
+    <p style="color:rgb(128, 255, 0);">{{ message }}</p>
+  {% endif %}
+   {% endfor %}
+<h3 class="text-center bg-info mt-3 py-2">Welcom to Our School project </h3>
+{% endblock content %}
+    
