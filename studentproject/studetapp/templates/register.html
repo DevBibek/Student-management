@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+<link rel="stylesheet" href="{% static 'login.css' %}">
+ 
+
+</head>
+<body>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+    
+    <div class="col-md-5 col-10 form-box">
+
+        <div class="form-container">
+            <p class="title text-center">Register</p>
+                {% if messages %}
+              {% for m in messages %}
+              {% if m.tags == 'success' %}
+            <p style="color: greenyellow;">{{m}}</p>
+               {% else %}
+               <p style="color: red;">{{m}}</p>
+              {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            <form class="form" method="post">
+                {% csrf_token %}
+                <input type="text" class="input" name="uname" placeholder="Username" required>
+                <input type="email" class="input" name="uemail" placeholder="Email" required>
+                <input type="password" class="input" name="upassword" placeholder="Password" required>
+                <input type="password" name="cpassword" class="input" placeholder="Confirm Password" required>
+<!-- 
+                <p class="page-link text-end">
+                    <a href="">
+                    <span class="page-link-label">Forgot Password?</span>
+                    </a>
+                </p> -->
+
+                <button class="form-btn w-100">Register</button>
+            </form>
+
+            <p class="sign-up-label text-center">
+                I have alreday account.
+                <a href="{% url 'login' %}"><span class="sign-up-link">Login</span></a>
+            </p>
+        </div>
+
+    </div>
+
+</div>
+    
+</body>
+</html>
